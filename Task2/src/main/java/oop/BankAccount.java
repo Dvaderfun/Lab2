@@ -1,60 +1,28 @@
 package oop;
 
-//public class BankAccount {
-//
-//    private String name;
-//    private double balance;
-//
-//    public void deposit(double amount) {
-//        balance = balance + amount;
-//    }
-//
-//    public double getBalance() {
-//        return this.balance;
-//    }
-//    public boolean withdraw(double amount) {
-//        balance = balance - amount;
-//        return true;
-//    }
-//}
-
 public class BankAccount {
 
     private String name;
     private double balance;
-    private double transactionFee;
 
-    public void setTransactionFee(double transactionFee) {
-        this.transactionFee = transactionFee;
+    public void deposit(double amount) {
+        balance = balance + amount;
     }
 
     public double getBalance() {
         return this.balance;
     }
 
-    public void deposit(double amount) {
-        if (amount > 0)
-            balance = balance + amount;
-    }
-
     public boolean withdraw(double amount) {
-        if (amount > 0) {
-            if (amount + transactionFee > balance)
-                return false;
-
-            balance = balance - (amount + transactionFee);
-            return true;
-        }
-        return false;
+        balance = balance - amount;
+        return true;
     }
 
-    public boolean transfer(BankAccount receiver, double amount) {
-        if (amount < 0)
-            return false;
+    public void setTransactionFee(double fee) {
 
-        if (withdraw(amount))
-            receiver.deposit(amount);
+    }
 
-        return true;
+    public void transfer(BankAccount other, double amount) {
+
     }
 }
