@@ -83,7 +83,12 @@ public class TimeSpanTest {
     @Order(8)
     public void testSubtractMethod(int startHours, int startMinutes, int hours, int minutes, int expectedMinutes, String errorMessage) {
         TimeSpan span = new TimeSpan(startHours, startMinutes);
-        span.subtract(new TimeSpan(hours, minutes));
+        try {
+            span.subtract(new TimeSpan(hours, minutes));
+        } catch (IllegalArgumentException exception) {
+            exception.getMessage();
+        }
+
         Assertions.assertEquals(expectedMinutes, span.getTotalMinutes(), errorMessage);
     }
 
